@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * add event listener on multiple elements
@@ -8,9 +8,7 @@ const addEventOnElements = function (elements, eventType, callback) {
   for (let i = 0, len = elements.length; i < len; i++) {
     elements[i].addEventListener(eventType, callback);
   }
-}
-
-
+};
 
 /**
  * NAVBAR TOGGLE FOR MOBILE
@@ -24,11 +22,9 @@ const toggleNavbar = function () {
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
   document.body.classList.toggle("nav-active");
-}
+};
 
 addEventOnElements(navTogglers, "click", toggleNavbar);
-
-
 
 /**
  * HEADER
@@ -45,17 +41,16 @@ window.addEventListener("scroll", function () {
   }
 });
 
-
-
 /**
  * SLIDER
  */
 
 const sliders = document.querySelectorAll("[data-slider]");
 
-const initSlider = function(currentSlider) {
-
-  const sldierContainer = currentSlider.querySelector("[data-slider-container]");
+const initSlider = function (currentSlider) {
+  const sldierContainer = currentSlider.querySelector(
+    "[data-slider-container]"
+  );
   const sliderPrevBtn = currentSlider.querySelector("[data-slider-prev]");
   const sliderNextBtn = currentSlider.querySelector("[data-slider-next]");
 
@@ -63,7 +58,7 @@ const initSlider = function(currentSlider) {
 
   const moveSliderItem = function () {
     sldierContainer.style.transform = `translateX(-${sldierContainer.children[currentSlidePos].offsetLeft}px)`;
-  }
+  };
 
   /**
    * NEXT SLIDE
@@ -79,7 +74,7 @@ const initSlider = function(currentSlider) {
     }
 
     moveSliderItem();
-  }
+  };
 
   sliderNextBtn.addEventListener("click", slideNext);
 
@@ -87,8 +82,7 @@ const initSlider = function(currentSlider) {
    * PREVIOUS SLIDE
    */
 
-   const slidePrev = function () {
-
+  const slidePrev = function () {
     if (currentSlidePos <= 0) {
       currentSlidePos = sldierContainer.childElementCount - 1;
     } else {
@@ -96,7 +90,7 @@ const initSlider = function(currentSlider) {
     }
 
     moveSliderItem();
-  }
+  };
 
   sliderPrevBtn.addEventListener("click", slidePrev);
 
@@ -105,12 +99,11 @@ const initSlider = function(currentSlider) {
     sliderNextBtn.style.display = "none";
     sliderPrevBtn.style.display = "none";
   }
+};
 
+for (let i = 0, len = sliders.length; i < len; i++) {
+  initSlider(sliders[i]);
 }
-
-for (let i = 0, len = sliders.length; i < len; i++) { initSlider(sliders[i]); }
-
-
 
 /**
  * ACCORDION
@@ -121,7 +114,6 @@ const accordions = document.querySelectorAll("[data-accordion]");
 let lastActiveAccordion = accordions[0];
 
 const initAccordion = function (currentAccordion) {
-
   const accordionBtn = currentAccordion.querySelector("[data-accordion-btn]");
 
   const expandAccordion = function () {
@@ -132,10 +124,41 @@ const initAccordion = function (currentAccordion) {
     currentAccordion.classList.toggle("expanded");
 
     lastActiveAccordion = currentAccordion;
-  }
+  };
 
   accordionBtn.addEventListener("click", expandAccordion);
+};
 
+for (let i = 0, len = accordions.length; i < len; i++) {
+  initAccordion(accordions[i]);
 }
 
-for (let i = 0, len = accordions.length; i < len; i++) { initAccordion(accordions[i]); }
+// const form = document.getElementById("contact-form");
+const scriptUrl =
+  "https://script.google.com/macros/s/AKfycbxnBTVGjzLqZ4rnADJ7Kjud98TBWfkLT2MaB-IfAd4g2XngrIoso7poYkfCUSkPLudurA/exec";
+
+const form = document.getElementById("contact-form");
+let responseText = document.getElementById('response-message');
+
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  var formData = new FormData(form);
+  responseText.innerText = "Submitting Data..."
+  responseText.className = "submitting";
+  
+  fetch(scriptUrl, { method: "POST", body: formData })
+    .then((response) => {
+      responseText.innerText = "Form submitted successfully!";
+      responseText.className = "success";
+      form.reset();
+    })
+    .catch((error) => {
+      responseText.innerText = "Something went wrong, please try again!";
+      responseText.className = "error";
+    })
+    
+    setTimeout(() => {
+      responseText.innerText = "";
+    }, 8000);
+});

@@ -12,6 +12,9 @@
     <meta name="title" content="CodeKite" />
     <meta name="description" content="This is a website build by @CodeKite" />
 
+    <!-- tailwind css  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <!-- 
     - favicon
   -->
@@ -89,23 +92,23 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link">About</a>
+              <a href="#about" class="navbar-link">About</a>
             </li>
 
             <li>
-              <a href="#" class="navbar-link">Services</a>
+              <a href="#services" class="navbar-link">Services</a>
             </li>
 
             <li>
-              <a href="#" class="navbar-link">Blog</a>
+              <a href="#blogs" class="navbar-link">Blog</a>
             </li>
 
             <li>
-              <a href="#" class="navbar-link">Our Products</a>
+              <a href="#projects" class="navbar-link">Our Products</a>
             </li>
 
             <li>
-              <a href="#" class="navbar-link">Contact</a>
+              <a href="#contact" class="navbar-link">Contact</a>
             </li>
           </ul>
 
@@ -122,31 +125,31 @@
           <ul class="social-list">
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
+                <!-- <ion-icon name="logo-twitter"></ion-icon> -->
               </a>
             </li>
 
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
+                <!-- <ion-icon name="logo-facebook"></ion-icon> -->
               </a>
             </li>
 
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-dribbble"></ion-icon>
+                <!-- <ion-icon name="logo-dribbble"></ion-icon> -->
               </a>
             </li>
 
             <li>
-              <a href="#" class="social-link">
+              <a href="https://www.instagram.com/codekite25/" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
 
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
+                <!-- <ion-icon name="logo-youtube"></ion-icon> -->
               </a>
             </li>
           </ul>
@@ -270,7 +273,7 @@
         - #SERVICE
       -->
 
-        <section class="section service" aria-labelledby="service-label">
+        <section class="section service" id="services" aria-labelledby="service-label">
           <div class="container">
             <p class="section-subtitle" id="service-label">What We Do?</p>
 
@@ -443,7 +446,7 @@
         - #ABOUT
       -->
 
-        <section class="about" aria-labelledby="about-label">
+        <section class="about" id="about" aria-labelledby="about-label">
           <div class="container">
             <figure class="about-banner">
               <img
@@ -611,7 +614,7 @@
         - #FEATURE
       -->
 
-        <section class="section feature" aria-labelledby="feature-label">
+        <section class="section feature" id="blogs" aria-labelledby="feature-label">
           <div class="container">
             <figure class="feature-banner">
               <img
@@ -757,7 +760,7 @@
         - #PROJECT
       -->
 
-        <section class="section project" aria-labelledby="project-label">
+        <section class="section project" id="projects" aria-labelledby="project-label">
           <div class="container">
             <p class="section-subtitle" id="project-label">Case Studies</p>
 
@@ -943,13 +946,35 @@
         - #CTA
       -->
 
-        <section class="cta" aria-label="call to action">
+        <section class="cta" id="contact" aria-label="call to action">
+          <!-- <h2 class="text-red-800 text-center text-8xl">Contact Us</h2> -->
           <div class="container">
             <h2 class="h2 section-title">
-              Join our community by using our services and grow your business.
+             Send us a Hi, or your Business Requirements
             </h2>
 
-            <a href="#" class="btn btn-primary">Try it For Free</a>
+            <form id="contact-form" name="contact-form" class="lg:w-[50%] flex flex-col gap-10" method="post" action="https://script.google.com/macros/s/AKfycbzY4Tf2wFBvXV-FVXE7jM5IHcu1QnJ18KPIE80k_CkFRTcVRz8EKD9i8sNyK_RBk4Rn/exec">
+              <div class="">
+                <input type="text" name="name" placeholder="Name" required class="input-field" />
+              </div>
+              <div class="">
+                <input type="phone" name="phone" placeholder="Whatsapp Number" required class="input-field" />
+              </div>
+              <div class="">
+                <input type="email" name="email" placeholder="Email" required class="input-field" />
+              </div>
+              <div class="">
+                <textarea name="messages" placeholder="Write any Message" required class="input-field w-full"></textarea>
+              </div>
+              <div class="">
+                <button id="submit-button" type="submit" class="btn">Send</button>
+              </div>
+            </form>
+
+            <span id="response-message"></span>
+            
+
+            <!-- <a href="#" class="btn btn-primary">Try it For Free</a> -->
           </div>
         </section>
       </article>

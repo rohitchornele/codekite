@@ -1062,6 +1062,42 @@ body.nav-active { overflow: hidden; }
 }
 
 
+/* #response-message{
+  width: auto;
+  color: rgb(10, 255, 10);
+  font-weight: bold;
+  background-color: rgb(27, 25, 37);
+  padding: 1px 8px 1px 8px;
+  margin-top: 15px;
+  margin-bottom: -10px;
+} */
+
+#response-message {
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
+
+#response-message.submitting {
+  color: #f8f40a;
+}
+
+#response-message.success {
+  color: #13f748;
+}
+
+#response-message.error {
+  color: #e50b21;
+}
+
+#response-message.hidden {
+  opacity: 0;
+}
+
 
 /**
  * responsive for large than 1400px screen
